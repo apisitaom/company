@@ -36,6 +36,14 @@ const Widgets = React.lazy(() => import('./views/Widgets/Widgets'));
 const Users = React.lazy(() => import('./views/Users/Users'));
 const User = React.lazy(() => import('./views/Users/User'));
 
+//Company
+const EmployeeAdd = React.lazy(() => import('./views/Pages/Employee/Add'));
+const EmployeeEdit = React.lazy(() => import('./views/Pages/Employee/Edit'));
+const EmployeeLists = React.lazy(() => import('./views/Pages/Employee/Lists'));
+const StoreAdd = React.lazy(() => import('./views/Pages/Store/Add'));
+const StoreEdit = React.lazy(() => import('./views/Pages/Store/Edit'));
+const StoreLists = React.lazy(() => import('./views/Pages/Store/Lists'));
+
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -79,6 +87,14 @@ const routes = [
   { path: '/charts', name: 'Charts', component: Charts },
   { path: '/users', exact: true,  name: 'Users', component: Users },
   { path: '/users/:id', exact: true, name: 'User Details', component: User },
+
+  //Company
+  { path: '/employee/add', exact: true, name: 'Employee Add', component: EmployeeAdd },
+  { path: '/employee/edit', exact: true, name: 'Employee Edit', component: EmployeeEdit },
+  { path: '/employee/lists', exact: true, name: 'Employee Lists', component: EmployeeLists },
+  { path: '/store/add', exact: true, name: 'Store Add', component: StoreAdd },
+  { path: '/store/edit', exact: true, name: 'Store Edit', component: StoreEdit },
+  { path: '/store/lists', exact: true, name: 'Store Lists', component: StoreLists },
 ];
 
 export default routes;
