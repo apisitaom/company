@@ -11,6 +11,57 @@ export default {
     },
     {
       title: true,
+      name: 'INSIDE COMPANY',
+      wrapper: {            // optional wrapper object
+        element: '',        // required valid HTML5 element tag
+        attributes: {}        // optional valid JS object with JS API naming ex: { className: "my-class", style: { fontFamily: "Verdana" }, id: "my-id"}
+      },
+      class: ''             // optional class names space delimited list for title item ex: "text-center"
+    },
+    {
+      name: 'Employee',
+      icon: 'icon-people',
+      children: [
+        {
+          name: 'Add',
+          url: '/employee/add',
+          icon: 'icon-plus',
+        },
+        {
+          name: 'Edit',
+          url: '/employee/edit',
+          icon: 'icon-docs',
+        },
+        {
+          name: 'Lists',
+          url: '/employee/lists',
+          icon: 'icon-list',
+        },
+      ],
+    },
+    {
+      name: 'Store',
+      icon: 'icon-people',
+      children: [
+        {
+          name: 'Add',
+          url: '/store/add',
+          icon: 'icon-plus',
+        },
+        {
+          name: 'Edit',
+          url: '/store/edit',
+          icon: 'icon-docs',
+        },
+        {
+          name: 'Lists',
+          url: '/store/lists',
+          icon: 'icon-list',
+        },
+      ],
+    },
+    {
+      title: true,
       name: 'Theme',
       wrapper: {            // optional wrapper object
         element: '',        // required valid HTML5 element tag
