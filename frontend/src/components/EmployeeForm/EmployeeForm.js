@@ -8,16 +8,17 @@ import {
     Input,
     Label,
     Row,
-  } from 'reactstrap';
+} from 'reactstrap';
 export default class EmployeeForm extends Component {
     render() {
         return (
             <div>
                 <Row>
-                    <Col xs="12" sm="6"> 
+                    <Col xs="12" sm="6">
                         <Card>
                             <CardHeader>
                                 <strong>Employee </strong>
+                                <small> รายละเอียดพนักงาน</small>
                             </CardHeader>
                             <CardBody>
                                 <Row>
@@ -46,7 +47,7 @@ export default class EmployeeForm extends Component {
                                     <Col xs="4">
                                         <FormGroup>
                                             <Label htmlFor="name">ชื่อเล่น</Label>
-                                            <Input type="text" id="name" placeholder="Enter employee nckname" required />
+                                            <Input type="text" id="name" placeholder="Enter nickname" required />
                                         </FormGroup>
                                     </Col>
                                     <Col xs="4">
@@ -121,10 +122,11 @@ export default class EmployeeForm extends Component {
                             </CardBody>
                         </Card>
                     </Col>
-                    <Col xs="12" sm="6"> 
+                    <Col xs="12" sm="6">
                         <Card>
                             <CardHeader>
-                                <strong>Position </strong>
+                                <strong>Position</strong>
+                                <small> รายละเอียดตำเเหน่งงาน</small>
                             </CardHeader>
                             <CardBody>
                                 <Row>
@@ -137,15 +139,15 @@ export default class EmployeeForm extends Component {
                                 </Row>
                                 <Row>
                                     <Col sx="6">
-                                    <FormGroup>
-                                      <Label htmlFor="position">ตำเเหน่ง</Label>
-                                      <Input type="select" name="position" id="position">
-                                        <option>CEO</option>
-                                        <option>GM</option>
-                                        <option>Engineer</option>
-                                        <option>Security</option>
-                                      </Input>
-                                    </FormGroup>
+                                        <FormGroup>
+                                            <Label htmlFor="position">ตำเเหน่ง</Label>
+                                            <Input type="select" name="position" id="position">
+                                                <option>CEO</option>
+                                                <option>GM</option>
+                                                <option>Engineer</option>
+                                                <option>Security</option>
+                                            </Input>
+                                        </FormGroup>
                                     </Col>
                                     <Col sx="6">
                                         <FormGroup>

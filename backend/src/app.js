@@ -5,9 +5,10 @@ require('dotenv').config();
 const path = require('path');
 const cors = require('cors');
 
+const app = express();
 const port = process.env.PORT || 4003
 
-const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
