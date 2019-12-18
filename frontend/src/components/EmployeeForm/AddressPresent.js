@@ -9,14 +9,14 @@ import {
     Label,
     Row,
 } from 'reactstrap';
-export default class AddressForm extends Component {
+export default class AddressPresent extends Component {
     render() {
         return (
             <div>
                 <Card>
                     <CardHeader>
-                        <strong>Address Form</strong>
-                        <small> ที่อยู่ตามทะเบียนบ้าน</small>
+                        <strong>Address Present</strong>
+                        <small> ที่อยู่ปัจจุบัน</small>
                     </CardHeader>
                     <CardBody>
                         <Row>
