@@ -6,7 +6,6 @@ export default class Lists extends Component {
         const listData = [];
         for (let i = 0; i < 23; i++) {
             listData.push({
-                href: 'http://ant.design',
                 title: `Macbook Pro 201${i}`,
                 avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
                 description:
@@ -60,6 +59,7 @@ export default class Lists extends Component {
                                     extra={
                                         <img
                                             width={272}
+                                            height={153}
                                             alt="logo"
                                             src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
                                         />
