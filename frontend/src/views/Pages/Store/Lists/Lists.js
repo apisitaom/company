@@ -7,12 +7,21 @@ export default class Lists extends Component {
         for (let i = 0; i < 23; i++) {
             listData.push({
                 href: 'http://ant.design',
-                title: `ant design part ${i}`,
+                title: `Macbook Pro 201${i}`,
                 avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
                 description:
-                    'Ant Design, a design language for background applications, is refined by Ant UED Team.',
+                    `2.4GHz Quad-Core Processor with Turbo Boost up to 4.1GHz
+                    256 GB Storage
+                    Touch Bar and Touch ID`,
                 content:
-                    'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+                    `2.4GHz quad-core 8th-generation Intel Core i5 processor
+                    Turbo Boost up to 4.1GHz
+                    Intel Iris Plus Graphics 655
+                    8GB 2133MHz LPDDR3 memory
+                    256GB SSD storage¹
+                    Retina display with True Tone
+                    Touch Bar and Touch ID
+                    Four Thunderbolt 3 ports`,
             });
         }
         const IconText = ({ type, text }) => (
@@ -46,8 +55,7 @@ export default class Lists extends Component {
                                     actions={[
                                         <IconText  text="รายละเอียด" key="list-vertical-star-o" />,
                                         <IconText  text="เเจ้งปัญหา" key="list-vertical-like-o" />,
-                                        // <IconText type="message" text="2" key="list-vertical-message" />,
-                                        <Button type="primary">ยืมชิ้นนี้</Button>
+                                        <Button shape="circle">ยืม</Button>
                                     ]}
                                     extra={
                                         <img

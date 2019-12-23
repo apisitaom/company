@@ -41,7 +41,7 @@ export default {
     },
     {
       name: 'Store',
-      icon: 'icon-people',
+      icon: 'icon-drawer',
       children: [
         {
           name: 'Add',

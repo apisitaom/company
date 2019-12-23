@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { Row, Col } from 'reactstrap'
-import { Table } from 'antd'
+import { Row, Col, Input } from 'reactstrap'
+import { Table, Divider, Switch } from 'antd'
 export default class Lists extends Component {
+    onChange(checked) {
+        console.log(`switch to ${checked}`);
+    }
     render() {
         const columns = [
             {
@@ -23,10 +26,6 @@ export default class Lists extends Component {
                 title: 'Tags',
                 key: 'tags',
                 dataIndex: 'tags',
-            },
-            {
-                title: 'Action',
-                key: 'action',
             },
         ];
         const data = [
@@ -55,7 +54,18 @@ export default class Lists extends Component {
         return (
             <div>
                 <Row>
-                    <Col>
+                    <Col xs="12" sm="6">
+                        <Divider type="vertical" />
+                        <strong>Status Employee</strong>
+                        <Divider type="vertical" />
+                        <Switch defaultChecked onChange={this.onChange} />
+                    </Col>
+                    <Col xs="12" sm="6">
+                        <Input type="text" id="name" placeholder="Search employee name ?" required />
+                    </Col>
+                </Row>
+                <Row style={{ paddingTop: '1.2%' }}>
+                    <Col xs="24" sm="12">
                         <Table
                             columns={columns}
                             dataSource={data} />
