@@ -31,23 +31,23 @@ export default class Lists extends Component {
         const data = [
             {
                 key: '1',
-                name: 'John Brown',
-                age: 32,
-                address: 'New York No. 1 Lake Park',
+                name: 'Apisit Prompha',
+                age: 22,
+                address: 'Thailnad, BKK',
                 tags: ['nice', 'developer'],
             },
             {
                 key: '2',
-                name: 'Jim Green',
-                age: 42,
-                address: 'London No. 1 Lake Park',
+                name: 'Jackmar',
+                age: 55,
+                address: 'Chaina',
                 tags: ['loser'],
             },
             {
                 key: '3',
-                name: 'Joe Black',
+                name: 'John Snow',
                 age: 32,
-                address: 'Sidney No. 1 Lake Park',
+                address: 'King of North',
                 tags: ['cool', 'teacher'],
             },
         ];

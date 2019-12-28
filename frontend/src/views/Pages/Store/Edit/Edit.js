@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-
+import StoreForm from '../../../../components/StoreForm/StoreForm'
 export default class Edit extends Component {
     render() {
         return (
             <div>
-                <h1>Store Edit</h1>
+                <StoreForm />
             </div>
         )
     }
