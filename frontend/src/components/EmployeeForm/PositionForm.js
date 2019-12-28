@@ -23,7 +23,7 @@ export default class PositionForm extends Component {
                             <Col xs="12">
                                 <FormGroup>
                                     <Label htmlFor="name">ชื่อ-นามสกุล</Label>
-                                    <Input type="text" id="name" placeholder="Enter employee name" required />
+                                    <Input type="text" placeholder="Enter employee name" required />
                                 </FormGroup>
                             </Col>
                         </Row>
@@ -31,7 +31,7 @@ export default class PositionForm extends Component {
                             <Col sx="6">
                                 <FormGroup>
                                     <Label htmlFor="position">ตำเเหน่ง</Label>
-                                    <Input type="select" name="position" id="position">
+                                    <Input type="select" name="position">
                                         <option>CEO</option>
                                         <option>GM</option>
                                         <option>Engineer</option>
