@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import {
-    Card,
-    CardBody,
-    CardHeader,
-    Col,
-    FormGroup,
-    Input,
-    Label,
-    Row,
-} from 'reactstrap';
+import { Card, CardBody, CardHeader, Col, FormGroup, Input, Label, Row } from 'reactstrap';
 export default class AddressPresent extends Component {
+    state = {
+        address: '',
+        province: '',
+        distric: '',
+        subdistric: '',
+        postcode: '',
+    }
+    onChange = async (e) => {
+      this.setState({
+          [e.target.name]: e.target.value
+      })
+    }
     render() {
         return (
             <div>
@@ -23,7 +26,12 @@ export default class AddressPresent extends Component {
                             <Col xs="12">
                                 <FormGroup>
                                     <Label htmlFor="name">ที่อยู่</Label>
-                                    <Input type="textarea" placeholder="Enter address" required />
+                                    <Input 
+                                        type="textarea" 
+                                        placeholder="Enter address" 
+                                        name="address"
+                                        onChange={this.onChange}
+                                        required />
                                 </FormGroup>
                             </Col>
                         </Row>
@@ -31,13 +39,21 @@ export default class AddressPresent extends Component {
                             <Col sx="6">
                                 <FormGroup>
                                     <Label htmlFor="ccnumber">จังหวัด</Label>
-                                    <Input type="text" placeholder="inside province" />
+                                    <Input 
+                                        type="text" 
+                                        placeholder="inside province"
+                                        name="province" 
+                                        onChange={this.onChange} />
                                 </FormGroup>
                             </Col>
                             <Col sx="6">
                                 <FormGroup>
                                     <Label htmlFor="ccnumber">อำเภอ</Label>
-                                    <Input type="text" placeholder="inside disstric" />
+                                    <Input 
+                                        type="text" 
+                                        placeholder="inside disstric"
+                                        name="distric"
+                                        onChange={this.onChange} />
                                 </FormGroup>
                             </Col>
                         </Row>
@@ -45,13 +61,21 @@ export default class AddressPresent extends Component {
                             <Col sx="6">
                                 <FormGroup>
                                     <Label htmlFor="ccnumber">ตำบล</Label>
-                                    <Input type="text" placeholder="inside subdisstric" />
+                                    <Input 
+                                        type="text" 
+                                        placeholder="inside subdisstric"
+                                        name="subdistric"
+                                        onChange={this.onChange} />
                                 </FormGroup>
                             </Col>
                             <Col sx="6">
                                 <FormGroup>
                                     <Label htmlFor="ccnumber">รหัสไปษณี</Label>
-                                    <Input type="text" placeholder="inside postcode" />
+                                    <Input 
+                                        type="text" 
+                                        placeholder="inside postcode"
+                                        name="postcode"
+                                        onChange={this.onChange} />
                                 </FormGroup>
                             </Col>
                         </Row>
