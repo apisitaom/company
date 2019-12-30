@@ -9,7 +9,7 @@ class StoreForm extends Component {
     }
     render() {
         const { getFieldDecorator } = this.props.form;
-        const uploadButton = (
+        const uploadButton = (  
             <div>
                 <Icon type={this.state.loading ? "loading" : "plus"} />
                 <div className="ant-upload-text">Upload</div>
