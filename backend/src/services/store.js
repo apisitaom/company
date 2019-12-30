@@ -35,3 +35,5 @@ async function deletes (req, res, next) {
         return responces.error(res, errors.server);
     }
 }
+
+module.exports = { add, edit, lists, deletes }
