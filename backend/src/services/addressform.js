@@ -20,7 +20,7 @@ async function edit (req, res, next) {
     const datas = { address, province, distric, subdistric, postcode }
     try {
         await Addressform.findOneAndUpdate(req.params.id, datas);
-        return responces.success(res, success.success)
+        return responces.success(res, success.updated)
     } catch (error) {
         return responces.error(res, errors.server);
     }
@@ -28,8 +28,8 @@ async function edit (req, res, next) {
 
 async function lists (req, res, next) {
     try {
-        await Addressform.find();
-        return responces.success(res, success.success)
+        const rows =  await Addressform.find();
+        return responces.success(res, success.success, rows)
     } catch (error) {
         return responces.error(res, errors.server);
     }
@@ -38,7 +38,7 @@ async function lists (req, res, next) {
 async function deletes (req, res, next) {
     try {
         await Addressform.findByIdAndRemove(req.params.id);
-        return responces.success(res, success.success)
+        return responces.success(res, success.deleted)
     } catch (error) {
         return responces.error(res, errors.server);
     }
