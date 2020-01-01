@@ -14,7 +14,6 @@ const borrowRoute = require('./routes/borrow');
 const categoryRoute = require('./routes/category');
 const employeeRoute = require('./routes/employee'); 
 const positionRoute = require('./routes/position');
-const statusRoute = require('./routes/status');
 const storeRoute = require('./routes/store');
 
 app.use(cors());
@@ -41,7 +40,6 @@ app.use('/borrow', borrowRoute);
 app.use('/category', categoryRoute);
 app.use('/employee', employeeRoute);
 app.use('/position', positionRoute);
-app.use('/status', statusRoute);
 app.use('/store', storeRoute);
 
 app.use('/images', express.static(path.join(__dirname + '/../public/images')));
