@@ -5,7 +5,10 @@ const errors = require('../lib/error');
 
 
 async function add (req, res, next) {
+    const { address, province, distric, subdistric, postcode } = req.body
+    const datas = { address, province, distric, subdistric, postcode }
     try {
+        await Addressform.create(datas);
         return responces.success(res, success.success)
     } catch (error) {
         return responces.error(res, errors.server);
@@ -13,7 +16,10 @@ async function add (req, res, next) {
 }
 
 async function edit (req, res, next) {
+    const { address, province, distric, subdistric, postcode } = req.body
+    const datas = { address, province, distric, subdistric, postcode }
     try {
+        await Addressform.findOneAndUpdate(req.params.id, datas);
         return responces.success(res, success.success)
     } catch (error) {
         return responces.error(res, errors.server);
@@ -22,6 +28,7 @@ async function edit (req, res, next) {
 
 async function lists (req, res, next) {
     try {
+        await Addressform.find();
         return responces.success(res, success.success)
     } catch (error) {
         return responces.error(res, errors.server);
@@ -30,6 +37,7 @@ async function lists (req, res, next) {
 
 async function deletes (req, res, next) {
     try {
+        await Addressform.findByIdAndRemove(req.params.id);
         return responces.success(res, success.success)
     } catch (error) {
         return responces.error(res, errors.server);

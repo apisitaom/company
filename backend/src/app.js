@@ -7,6 +7,7 @@ const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 4003
+const addressformRoute = require('./routes/addressform');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -25,6 +26,8 @@ app.use((req, res, next) => {
     console.log(`Server on path ${req.ip} ${req.method} ${req.path}`)
     next();
 });
+
+app.use('/addressform', addressformRoute)
 
 app.use('/images', express.static(path.join(__dirname + '/../public/images')));
 
