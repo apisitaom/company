@@ -1,9 +1,13 @@
 const router = require('express').Router();
+const store = require('../services/store');
+const img = require('../lib/imageupload');
 
 router.get('/', (req, res) => {res.json({info : `store route`})});
-// router.get('/lists', aboutme.lists);
+router.get('/lists', store.lists);
 
-// router.post('/add', aboutme.add);
-// router.post('/edit/:id', aboutme.edit);
+router.post('/add', img.upload, store.add);
+router.put('/edit/:id', store.edit);
+
+router.delete('/delete/:id', store.deletes);
 
 module.exports = router;
