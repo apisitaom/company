@@ -5,6 +5,7 @@ const StoreSchema = new Schema({
     picture: {type: String},
     name: {type: String},
     option: {type: String},
-    detail: {type: String}
+    detail: {type: String},
+    categoryid: {type: String}
 })
 module.exports = Store = mongoose.model('Store', StoreSchema)
