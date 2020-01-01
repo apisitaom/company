@@ -6,7 +6,7 @@ const errors = require('../lib/error');
 
 async function add (req, res, next) {
     try {
-        return responces.success(res, success.success)
+        return responces.success(res, success.saved)
     } catch (error) {
         return responces.error(res, errors.server);
     }
@@ -14,7 +14,7 @@ async function add (req, res, next) {
 
 async function edit (req, res, next) {
     try {
-        return responces.success(res, success.success)
+        return responces.success(res, success.updated)
     } catch (error) {
         return responces.error(res, errors.server);
     }
@@ -30,7 +30,7 @@ async function lists (req, res, next) {
 
 async function deletes (req, res, next) {
     try {
-        return responces.success(res, success.success)
+        return responces.success(res, success.deleted)
     } catch (error) {
         return responces.error(res, errors.server);
     }
