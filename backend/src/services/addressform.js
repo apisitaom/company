@@ -8,7 +8,7 @@ async function add (req, res, next) {
     const datas = { address, province, distric, subdistric, postcode }
     try {
         await Addressform.create(datas);
-        return responces.success(res, success.success)
+        return responces.success(res, success.saved)
     } catch (error) {
         return responces.error(res, errors.server);
     }

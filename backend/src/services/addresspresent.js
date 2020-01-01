@@ -5,16 +5,22 @@ const errors = require('../lib/error');
 
 
 async function add (req, res, next) {
+    const { address, province, distric, subdistric, postcode } = req.body
+    const datas = { address, province, distric, subdistric, postcode }
     try {
-        return responces.success(res, success.success)
+        await Addresspresent.create(datas);
+        return responces.success(res, success.saved)
     } catch (error) {
         return responces.error(res, errors.server);
     }
 }
 
 async function edit (req, res, next) {
+    const { address, province, distric, subdistric, postcode } = req.body
+    const datas = { address, province, distric, subdistric, postcode }
     try {
-        return responces.success(res, success.success)
+        await Addresspresent.findByIdAndUpdate(req.params.id, datas);
+        return responces.success(res, success.updated)
     } catch (error) {
         return responces.error(res, errors.server);
     }
@@ -22,7 +28,8 @@ async function edit (req, res, next) {
 
 async function lists (req, res, next) {
     try {
-        return responces.success(res, success.success)
+        const rows = await Addresspresent.find();
+        return responces.success(res, success.success, rows)
     } catch (error) {
         return responces.error(res, errors.server);
     }
@@ -30,7 +37,8 @@ async function lists (req, res, next) {
 
 async function deletes (req, res, next) {
     try {
-        return responces.success(res, success.success)
+        await Addresspresent.findByIdAndRemove(req.params.id);
+        return responces.success(res, success.deleted)
     } catch (error) {
         return responces.error(res, errors.server);
     }
