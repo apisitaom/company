@@ -58,7 +58,7 @@ export default class Lists extends Component {
                         <Divider type="vertical" />
                         <strong>Status Employee</strong>
                         <Divider type="vertical" />
-                        <Switch defaultChecked onChange={this.onChange} />
+                        <Switch checkedChildren="อยู่" unCheckedChildren="ออก" defaultChecked onChange={this.onChange} />
                     </Col>
                     <Col xs="12" sm="6">
                         <Input type="text" id="name" placeholder="Search employee name ?" required />
