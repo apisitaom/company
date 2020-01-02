@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Card, CardBody, CardHeader, Col, FormGroup, Input, Label, Row, Button, CardFooter } from 'reactstrap';
 import { DatePicker } from 'antd';
+import { employeeAdd } from '../../services/api'
 export default class EmployeeForm extends Component {
     state = {
         name: '',
@@ -28,8 +29,25 @@ export default class EmployeeForm extends Component {
           [e.target.name]: e.target.value
         })
     }
-    onSubmit = async () => {
+    onSubmit = () => {
         console.log('Click Submit');
+        const data = {
+            name: this.state.name,
+            identification: this.state.identification,
+            identificationsocial: this.state.identificationsocial,
+            nickname: this.state.nickname,
+            birthday: this.state.birthday,
+            age: this.state.age,
+            phonenumber: this.state.phonenumber,
+            gender: this.state.gender,
+            wieght: this.state.wieght,
+            hight: this.state.hight,
+            country: this.state.country,
+            nationality: this.state.nationality,
+            race: this.state.race,
+            religion: this.state.religion
+        }
+        employeeAdd(data);
     }
     onReset = async () => {
         console.log('Click Reset !!');

@@ -70,7 +70,7 @@ export const categoryDeleted = async (data, token = "") => {
 };
 // Employee
 export const employeeAdd = async(data) => {
-    const res = await FetchForm("POST", '', '/employee/add', data)
+    const res = await Fetch("POST", '', '/employee/add', data)
     return res
 }
 export const employeeEdit = async(data) => {
