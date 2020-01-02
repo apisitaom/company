@@ -15,6 +15,8 @@ const EmployeeSchema = new Schema({
     country: {type: String},
     nationality: {type: String},
     race: {type: String},
-    religion: {type: String}
+    religion: {type: String},
+    
+    positionid: {type: String},
 })
 module.exports = Employee = mongoose.model('Employee', EmployeeSchema)

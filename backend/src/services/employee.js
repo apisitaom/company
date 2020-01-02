@@ -5,8 +5,8 @@ const errors = require('../lib/error');
 
 
 async function add (req, res, next) {
-    const { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion } = req.body
-    const datas = { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion }
+    const { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion, positionid } = req.body
+    const datas = { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion, positionid }
     try {
         await Employee.create(datas);
         return responces.success(res, success.saved)
@@ -16,8 +16,8 @@ async function add (req, res, next) {
 }
 
 async function edit (req, res, next) {
-    const { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion } = req.body
-    const datas = { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion }
+    const { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion, positionid } = req.body
+    const datas = { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion, positionid }
     try {
         await Employee.findByIdAndUpdate(req.params.id, datas);
         return responces.success(res, success.updated)
