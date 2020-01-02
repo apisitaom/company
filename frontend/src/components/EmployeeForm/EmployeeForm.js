@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Card, CardBody, CardHeader, Col, FormGroup, Input, Label, Row } from 'reactstrap';
+import { Card, CardBody, CardHeader, Col, FormGroup, Input, Label, Row, Button, CardFooter } from 'reactstrap';
+import { DatePicker } from 'antd';
 export default class EmployeeForm extends Component {
     state = {
         name: '',
@@ -17,10 +18,21 @@ export default class EmployeeForm extends Component {
         race: '',
         religion: ''
     }
+    onChangeDate = async (date, dateString) => {
+        this.setState({
+            birthday: dateString
+        })
+    }
     onChange = async (e) => {
       this.setState({
           [e.target.name]: e.target.value
-      })
+        })
+    }
+    onSubmit = async () => {
+        console.log('Click Submit');
+    }
+    onReset = async () => {
+        console.log('Click Reset !!');
     }
     render() {
         return (
@@ -81,12 +93,10 @@ export default class EmployeeForm extends Component {
                             <Col xs="4">
                                 <FormGroup>
                                     <Label htmlFor="name">วันเกิด</Label>
-                                    <Input 
-                                        type="text"  
-                                        placeholder="Enter birthday" 
-                                        name="birthday"
-                                        onChange={this.onChange}
-                                        required />
+                                    <DatePicker 
+                                    onChange={this.onChangeDate} 
+                                    name="birthday"
+                                    />
                                 </FormGroup>
                             </Col>
                             <Col xs="4">
@@ -198,6 +208,10 @@ export default class EmployeeForm extends Component {
                             </Col>
                         </Row>
                     </CardBody>
+                    <CardFooter>
+                      <Button onClick={this.onSubmit} type="submit" size="sm" color="success"><i className="fa fa-dot-circle-o"></i> Submit</Button>
+                      <Button onClick={this.onReset} type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
+                    </CardFooter>
                 </Card>
             </div>
         )

@@ -17,7 +17,6 @@ export const Fetch = async (method = "POST", token, path, data ={}) => {
     } catch (err) {
     console.log(err.msg)
     return err
-
     }
 }
 

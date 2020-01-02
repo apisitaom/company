@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, CardBody, CardHeader, Col, FormGroup, Input, Label, Row } from 'reactstrap';
+import { Card, CardBody, CardHeader, Col, FormGroup, Input, Label, Row, Button, CardFooter } from 'reactstrap';
 export default class PositionForm extends Component {
     state = {
         name: '',
@@ -10,6 +10,12 @@ export default class PositionForm extends Component {
       this.setState({
           [e.target.name]: e.target.value
       })
+    }
+    onSubmit = async () => {
+        console.log('Click Submit');
+    }
+    onReset = async () => {
+        console.log('Click Reset !!');
     }
     render() {
         return (
@@ -61,6 +67,10 @@ export default class PositionForm extends Component {
                             </Col>
                         </Row>
                     </CardBody>
+                    <CardFooter>
+                      <Button onClick={this.onSubmit} type="submit" size="sm" color="success"><i className="fa fa-dot-circle-o"></i> Submit</Button>
+                      <Button onClick={this.onReset} type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
+                    </CardFooter>
                 </Card>
             </div>
         )
