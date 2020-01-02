@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
-import { Upload, Icon, Form, Input } from 'antd'
+import { Upload, Icon, Form, Input, Select } from 'antd'
 import { Row, Col, Label } from 'reactstrap'
 const { TextArea } = Input
+const { Option } = Select;
 class StoreForm extends Component {
     state = {
         imgFile: null,
         loading: false,
+    }
+    handleChange(value) {
+      console.log(`selected ${value}`);
     }
     render() {
         const { getFieldDecorator } = this.props.form;
@@ -34,6 +38,21 @@ class StoreForm extends Component {
                                     {this.state.imageUrl ? <img src={this.state.imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
                                 </Upload>
                             )}
+                        </Form.Item>
+                        <Form.Item>
+                            {getFieldDecorator('name', {
+                                rules: [
+                                    {
+                                        required: true,
+                                        message: 'Please input your names!'
+                                    }],
+                            })(
+                                <Select defaultValue="lucy" style={{ width: '50%' }} onChange={this.handleChange} placeholder="เลือกประเภท">
+                                  <Option value="jack">Jack</Option>
+                                  <Option value="lucy">Lucy</Option>
+                                  <Option value="Yiminghe">yiminghe</Option>
+                                </Select>
+                                    ,)}
                         </Form.Item>
                         <Form.Item>
                             {getFieldDecorator('name', {
