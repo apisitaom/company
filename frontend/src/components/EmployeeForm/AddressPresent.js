@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Card, CardBody, CardHeader, Col, FormGroup, Input, Label, Row, Button, CardFooter } from 'reactstrap';
+import { addresspresentAdd } from '../../services/api'
 export default class AddressPresent extends Component {
     state = {
         address: '',
@@ -14,7 +15,14 @@ export default class AddressPresent extends Component {
       })
     }
     onSubmit = async () => {
-        console.log('Click Submit');
+        const data = {
+            address: this.state.address,
+            province: this.state.province,
+            distric: this.state.distric,
+            subdistric: this.state.subdistric,
+            postcode: this.state.postcode,
+        }
+        await addresspresentAdd(data);
     }
     onReset = async () => {
         console.log('Click Reset !!');
@@ -78,7 +86,7 @@ export default class AddressPresent extends Component {
                                 <FormGroup>
                                     <Label htmlFor="ccnumber">รหัสไปษณี</Label>
                                     <Input 
-                                        type="text" 
+                                        type="number" 
                                         placeholder="inside postcode"
                                         name="postcode"
                                         onChange={this.onChange} />

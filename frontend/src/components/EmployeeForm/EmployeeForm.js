@@ -30,7 +30,6 @@ export default class EmployeeForm extends Component {
         })
     }
     onSubmit = () => {
-        console.log('Click Submit');
         const data = {
             name: this.state.name,
             identification: this.state.identification,
@@ -50,7 +49,6 @@ export default class EmployeeForm extends Component {
         employeeAdd(data);
     }
     onReset = async () => {
-        console.log('Click Reset !!');
     }
     render() {
         return (
@@ -121,7 +119,7 @@ export default class EmployeeForm extends Component {
                                 <FormGroup>
                                     <Label htmlFor="name">อายุ</Label>
                                     <Input 
-                                        type="text"  
+                                        type="number"  
                                         placeholder="Enter age" 
                                         name="age"
                                         onChange={this.onChange}

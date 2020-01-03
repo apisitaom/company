@@ -2,7 +2,7 @@ import  { Fetch, FetchForm } from './fetch'
 
 // Addressform
 export const addressformAdd = async(data) => {
-    const res = await FetchForm("POST", '', '/addressform/add', data)
+    const res = await Fetch("POST", '', '/addressform/add', data)
     return res
 }
 export const addressformEdit = async(data) => {
@@ -19,7 +19,7 @@ export const addressformDeleted = async (data, token = "") => {
 };
 // Addresspresent
 export const addresspresentAdd = async(data) => {
-    const res = await FetchForm("POST", '', '/addresspresent/add', data)
+    const res = await Fetch("POST", '', '/addresspresent/add', data)
     return res
 }
 export const addresspresentEdit = async(data) => {
@@ -36,7 +36,7 @@ export const addresspresentDeleted = async (data, token = "") => {
 };
 // Borrow
 export const borrowAdd = async(data) => {
-    const res = await FetchForm("POST", '', '/borrow/add', data)
+    const res = await Fetch("POST", '', '/borrow/add', data)
     return res
 }
 export const borrowEdit = async(data) => {
@@ -53,7 +53,7 @@ export const borrowDeleted = async (data, token = "") => {
 };
 // Category
 export const categoryAdd = async(data) => {
-    const res = await FetchForm("POST", '', '/category/add', data)
+    const res = await Fetch("POST", '', '/category/add', data)
     return res
 }
 export const categoryEdit = async(data) => {
@@ -87,7 +87,7 @@ export const employeeDeleted = async (data, token = "") => {
 };
 // Position
 export const positionAdd = async(data) => {
-    const res = await FetchForm("POST", '', '/position/add', data)
+    const res = await Fetch("POST", '', '/position/add', data)
     return res
 }
 export const positionEdit = async(data) => {
