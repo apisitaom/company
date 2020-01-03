@@ -75,6 +75,36 @@ export default class EmployeeForm extends Component {
                         <Row>
                             <Col sx="6">
                                 <FormGroup>
+                                    <Label htmlFor="position">ตำเเหน่ง</Label>
+                                    <Input 
+                                        type="select" 
+                                        name="position"
+                                        onChange={this.onChange}
+                                        >
+                                            <option>CEO</option>
+                                            <option>GM</option>
+                                            <option>Engineer</option>
+                                            <option>Security</option>
+                                    </Input>
+                                </FormGroup>
+                            </Col>
+                            <Col sx="6">
+                                <FormGroup>
+                                    <Label htmlFor="ccnumber">สถานะการทำงาน</Label>
+                                    <Input 
+                                        type="select" 
+                                        name="position"
+                                        onChange={this.onChange}
+                                        >
+                                            <option value='true' >ยังคงทำงาน</option>
+                                            <option value='false' >พ้นสภาพพนักงาน</option>
+                                    </Input>
+                                </FormGroup>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col sx="6">
+                                <FormGroup>
                                     <Label htmlFor="ccnumber">เลขบัตรประชาชน</Label>
                                     <Input  
                                         type="text"  
