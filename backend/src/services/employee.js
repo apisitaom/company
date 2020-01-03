@@ -3,7 +3,6 @@ const responces = require('../lib/responces');
 const success = require('../lib/success');
 const errors = require('../lib/error');
 
-
 async function add (req, res, next) {
     const { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion, positionid, status } = req.body
     const datas = { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion, positionid, status }
