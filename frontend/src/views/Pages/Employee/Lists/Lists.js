@@ -1,54 +1,59 @@
 import React, { Component } from 'react'
 import { Row, Col, Input } from 'reactstrap'
 import { Table, Divider, Switch } from 'antd'
+import { employeeAll } from '../../../../services/api'
 export default class Lists extends Component {
+    state = {
+        employee: []
+    }
+    UNSAFE_componentWillMount () {
+        this.OnGetEmployee();
+    }
+    OnGetEmployee = async () => {
+        const resp = await employeeAll();
+        resp.code === 200 && this.setState({
+            employee: resp.data
+        })
+    }
     onChange(checked) {
         console.log(`switch to ${checked}`);
     }
     render() {
         const columns = [
             {
-                title: 'Name',
+                title: 'ชื่อ-นามสกุล',
                 dataIndex: 'name',
                 key: 'name',
             },
             {
-                title: 'Age',
+                title: 'ชื่อเล่น',
+                dataIndex: 'nickname',
+                key: 'nickname',
+            },
+            {
+                title: 'อายุ',
                 dataIndex: 'age',
                 key: 'age',
             },
             {
-                title: 'Address',
-                dataIndex: 'address',
-                key: 'address',
+                title: 'เพศ',
+                key: 'gender',
+                dataIndex: 'gender',
             },
             {
-                title: 'Tags',
-                key: 'tags',
-                dataIndex: 'tags',
-            },
-        ];
-        const data = [
-            {
-                key: '1',
-                name: 'Apisit Prompha',
-                age: 22,
-                address: 'Thailnad, BKK',
-                tags: ['nice', 'developer'],
+                title: 'เบอร์โทร',
+                key: 'phonenumber',
+                dataIndex: 'phonenumber',
             },
             {
-                key: '2',
-                name: 'Jackmar',
-                age: 55,
-                address: 'Chaina',
-                tags: ['loser'],
+                title: 'เเก้ไข',
+                key: '',
+                dataIndex: '',
             },
             {
-                key: '3',
-                name: 'John Snow',
-                age: 32,
-                address: 'King of North',
-                tags: ['cool', 'teacher'],
+                title: 'รายละเอียด',
+                key: '',
+                dataIndex: '',
             },
         ];
         return (
@@ -67,8 +72,9 @@ export default class Lists extends Component {
                 <Row style={{ paddingTop: '1.2%' }}>
                     <Col xs="24" sm="12">
                         <Table
+                            rowKey="_id"
                             columns={columns}
-                            dataSource={data} />
+                            dataSource={this.state.employee} />
                     </Col>
                 </Row>
             </div>
