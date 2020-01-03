@@ -9,4 +9,4 @@ router.put('/edit/:id', employee.edit);
 
 router.delete('/delete/:id', employee.deletes);
 
-module.exports = router;
+module.exports =     router;

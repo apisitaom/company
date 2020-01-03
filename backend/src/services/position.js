@@ -5,8 +5,8 @@ const errors = require('../lib/error');
 
 
 async function add (req, res, next) {
-    const { name, position, phonecontack, status } = req.body
-    const datas = { name, position, phonecontack, status }
+    const { position } = req.body
+    const datas = { position }
     try {
         await Position.create(datas);
         return responces.success(res, success.saved)
@@ -16,8 +16,8 @@ async function add (req, res, next) {
 }
 
 async function edit (req, res, next) {
-    const { name, position, phonecontack, status } = req.body
-    const datas = { name, position, phonecontack, status }
+    const { position } = req.body
+    const datas = { position }
     try {
         await Position.findByIdAndUpdate(req.params.id, datas);
         return responces.success(res, success.updated)
@@ -28,7 +28,7 @@ async function edit (req, res, next) {
 
 async function lists (req, res, next) {
     try {
-        const rows = await Position.find({status: { $all: true }});
+        const rows = await Position.find();
         return responces.success(res, success.success, rows)
     } catch (error) {
         return responces.error(res, errors.server);

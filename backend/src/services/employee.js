@@ -5,8 +5,8 @@ const errors = require('../lib/error');
 
 
 async function add (req, res, next) {
-    const { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion, positionid } = req.body
-    const datas = { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion, positionid }
+    const { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion, positionid, status } = req.body
+    const datas = { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion, positionid, status }
     try {
         await Employee.create(datas);
         return responces.success(res, success.saved)
@@ -16,9 +16,10 @@ async function add (req, res, next) {
 }
 
 async function edit (req, res, next) {
-    const { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion, positionid } = req.body
-    const datas = { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion, positionid }
+    const { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion, positionid, status } = req.body
+    const datas = { name, identification, identificationsocial, nickname, birthday, age, phonenumber, gender, wieght, hight, country, nationality, race, religion, positionid, status }
     try {
+        
         await Employee.findByIdAndUpdate(req.params.id, datas);
         return responces.success(res, success.updated)
     } catch (error) {
@@ -28,7 +29,7 @@ async function edit (req, res, next) {
 
 async function lists (req, res, next) {
     try {
-        const rows = await Employee.find();
+        const rows = await Employee.find({status: { $all: true }});
         return responces.success(res, success.success, rows)
     } catch (error) {
         return responces.error(res, errors.server);
