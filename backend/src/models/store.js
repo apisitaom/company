@@ -6,6 +6,6 @@ const StoreSchema = new Schema({
     name: {type: String},
     option: {type: String},
     detail: {type: String},
-    categoryid: {type: String}
+    category: {type: String}
 })
 module.exports = Store = mongoose.model('Store', StoreSchema)
