@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Upload, Icon, Form, Input, Select } from 'antd'
+import { Upload, Icon, Form, Input, Select, message } from 'antd'
 import { Row, Col, Label } from 'reactstrap'
 const { TextArea } = Input
 const { Option } = Select;
@@ -7,11 +7,71 @@ class StoreForm extends Component {
     state = {
         imgFile: null,
         loading: false,
+        category: '',
+        name: '',
+        option: '',
+        detail: ''
+    }
+    UNSAFE_componentWillMount () {
+        message.config({
+            top: '8%',
+            duration: 2,
+        })
     }
     handleChange(value) {
       console.log(`selected ${value}`);
     }
+    // handleSubmit = async e => {
+    //   e.preventDefault()    
+    //   this.props.form.validateFields(async (err, value) => {
+    //     if (!err) {
+    //       const formData = await this.setFormData(value);      
+    //       const resp = await albumAdd(formData);
+    //       if (resp.code === 200) {
+    //         window.location.assign('#product');
+    //       } else {
+    //         message.error('Add Product failed, Please try again');
+    //       }
+    //     }
+    //   })
+    // }
+    // setFormData = (values) => {
+    //   const formData = new FormData()
+    //   formData.append('picture', this.state.imgFile)    
+    //   formData.append('detail', values.detail)    
+    //   formData.append('url', values.url)    
+    //   formData.append('name', values.name)  
+    //   formData.append('content', values.content)    
+    //   return formData
+    // }
+    beforeUpload = file => {
+      const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+      if (!isJpgOrPng) {
+          message.config({
+              top:200
+          })
+        message.error('You can only upload JPG/PNG file!')
+        return false;
+      }
+      const isLt2M = file.size / 1024 / 1024 < 2;
+      if (!isLt2M) {
+        message.error({content: 'Image must smaller than 2MB!', })
+        return false;
+      }
+      const reader = new FileReader();
+      reader.onload = e => {
+        this.setState({
+          imageUrl: e.target.result
+        });
+      };
+      reader.readAsDataURL(file);
+      this.setState({
+        imgFile: file
+      })    
+      return false;
+    };
     render() {
+        console.log('PROPT :', this.props);
         const { getFieldDecorator } = this.props.form;
         const uploadButton = (  
             <div>
@@ -40,11 +100,11 @@ class StoreForm extends Component {
                             )}
                         </Form.Item>
                         <Form.Item>
-                            {getFieldDecorator('name', {
+                            {getFieldDecorator('category', {
                                 rules: [
                                     {
                                         required: true,
-                                        message: 'Please input your names!'
+                                        message: 'Please input your category!'
                                     }],
                             })(
                                 <Select defaultValue="lucy" style={{ width: '50%' }} onChange={this.handleChange} placeholder="เลือกประเภท">
@@ -67,11 +127,11 @@ class StoreForm extends Component {
                                     ,)}
                         </Form.Item>
                         <Form.Item>
-                            {getFieldDecorator('name', {
+                            {getFieldDecorator('option', {
                                 rules: [
                                     {
                                         required: true,
-                                        message: 'Please input your names!'
+                                        message: 'Please input your options!'
                                     }],
                             })(
                                 <Input
@@ -79,11 +139,11 @@ class StoreForm extends Component {
                                 ,)}
                         </Form.Item>
                         <Form.Item>
-                            {getFieldDecorator('name', {
+                            {getFieldDecorator('detail', {
                                 rules: [
                                     {
                                         required: true,
-                                        message: 'Please input your names!'
+                                        message: 'Please input your detail!'
                                     }],
                             })(
                                 <TextArea

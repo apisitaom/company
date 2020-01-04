@@ -1,7 +1,21 @@
 import React, { Component } from 'react'
 import { List, Avatar, Icon, Button } from 'antd';
 import { Row, Col } from 'reactstrap'
+import { storeAll } from '../../../../services/api'
+import { imagurl } from '../../../../services/config/apiurl'
 export default class Lists extends Component {
+    state = {
+        stores: []
+    }
+    UNSAFE_componentWillMount () {
+        this.onGetStore();
+    }   
+    onGetStore = async () => {
+        const resp = await storeAll();
+        resp.code === 200 && this.setState({
+            stores: resp.data
+        }, () => console.log(this.state.stores)) 
+    }
     render() {
         const listData = [];
         for (let i = 0; i < 23; i++) {
@@ -42,10 +56,10 @@ export default class Lists extends Component {
                                 },
                                 pageSize: 3,
                             }}
-                            dataSource={listData}
+                            dataSource={typeof this.state.stores !== 'undefined' && this.state.stores}
                             footer={
                                 <div>
-                                    <b>ant design</b> footer part
+                                    <b>COMPANY</b> borrow
                                 </div>
                             }
                             renderItem={item => (
@@ -59,18 +73,17 @@ export default class Lists extends Component {
                                     extra={
                                         <img
                                             width={272}
-                                            height={153}
                                             alt="logo"
-                                            src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                                            src={typeof item.picture !== 'undefined' && imagurl+item.picture}
                                         />
                                     }
                                 >
                                     <List.Item.Meta
                                         avatar={<Avatar src={item.avatar} />}
-                                        title={<a href={item.href}>{item.title}</a>}
-                                        description={item.description}
+                                        title={<a href={item.href}>{item.name}</a>}
+                                        description={item.option}
                                     />
-                                    {item.content}
+                                    {item.detail}
                                 </List.Item>
                             )}
                         />
