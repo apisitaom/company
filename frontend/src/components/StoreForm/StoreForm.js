@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Upload, Icon, Form, Input, Select, message } from 'antd'
 import { Row, Col, Label } from 'reactstrap'
+import { categoryAll } from '../../services/api'
 const { TextArea } = Input
 const { Option } = Select;
 class StoreForm extends Component {
@@ -10,16 +11,27 @@ class StoreForm extends Component {
         category: '',
         name: '',
         option: '',
-        detail: ''
+        detail: '',
+        categorys: []
     }
     UNSAFE_componentWillMount () {
+        this.onGetCategory();
         message.config({
             top: '8%',
             duration: 2,
         })
     }
-    handleChange(value) {
-      console.log(`selected ${value}`);
+    onGetCategory = async () => {
+        const resp = await categoryAll();
+        resp.code === 200 && this.setState({
+            categorys: resp.data
+        })
+    }
+    handleChange = async (value) => {
+      console.log(`selected  ${value}`);
+      this.setState({
+          category: value
+      })
     }
     // handleSubmit = async e => {
     //   e.preventDefault()    
@@ -71,7 +83,7 @@ class StoreForm extends Component {
       return false;
     };
     render() {
-        console.log('PROPT :', this.props);
+        console.log('STATE :', this.state);
         const { getFieldDecorator } = this.props.form;
         const uploadButton = (  
             <div>
@@ -107,10 +119,14 @@ class StoreForm extends Component {
                                         message: 'Please input your category!'
                                     }],
                             })(
-                                <Select defaultValue="lucy" style={{ width: '50%' }} onChange={this.handleChange} placeholder="เลือกประเภท">
-                                  <Option value="jack">Jack</Option>
-                                  <Option value="lucy">Lucy</Option>
-                                  <Option value="Yiminghe">yiminghe</Option>
+                                <Select style={{ width: '50%' }} onChange={this.handleChange} placeholder="เลือกประเภท">
+                                    {
+                                        this.state.categorys.map(index =>{
+                                            return (
+                                            <Option key={index.category}>{index.category}</Option>
+                                            )
+                                        })
+                                    }
                                 </Select>
                                     ,)}
                         </Form.Item>
