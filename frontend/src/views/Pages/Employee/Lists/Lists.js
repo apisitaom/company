@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col, Input } from 'reactstrap'
-import { Table, Divider, Switch } from 'antd'
+import { Table, Divider, Switch, Icon } from 'antd'
 import { employeeAll } from '../../../../services/api'
 export default class Lists extends Component {
     state = {
@@ -20,40 +20,24 @@ export default class Lists extends Component {
     }
     render() {
         const columns = [
-            {
-                title: 'ชื่อ-นามสกุล',
-                dataIndex: 'name',
-                key: 'name',
+            { title: 'ชื่อ-นามสกุล', dataIndex: 'name', key: 'name' },
+            { title: 'ชื่อเล่น', dataIndex: 'nickname', key: 'nickname' },
+            { title: 'อายุ', dataIndex: 'age', key: 'age' },
+            { title: 'เพศ', key: 'gender', dataIndex: 'gender' },
+            { title: 'เบอร์โทร', key: 'phonenumber', dataIndex: 'phonenumber' },
+            { title: 'เเก้ไข', key: '', dataIndex: '',
+                render: text => {
+                    return (
+                        <span><Icon onClick={ () => console.log('EDIT', text)} type="edit" /></span>
+                    )
+                }
             },
-            {
-                title: 'ชื่อเล่น',
-                dataIndex: 'nickname',
-                key: 'nickname',
-            },
-            {
-                title: 'อายุ',
-                dataIndex: 'age',
-                key: 'age',
-            },
-            {
-                title: 'เพศ',
-                key: 'gender',
-                dataIndex: 'gender',
-            },
-            {
-                title: 'เบอร์โทร',
-                key: 'phonenumber',
-                dataIndex: 'phonenumber',
-            },
-            {
-                title: 'เเก้ไข',
-                key: '',
-                dataIndex: '',
-            },
-            {
-                title: 'รายละเอียด',
-                key: '',
-                dataIndex: '',
+            { title: 'รายละเอียด', key: '', dataIndex: '',
+                render: text => {
+                    return (
+                        <span><Icon onClick={ () => console.log('VIEW', text)} type="align-center" /></span>
+                    )
+                }
             },
         ];
         return (

@@ -52,7 +52,7 @@ export default class Lists extends Component {
                                 <List.Item
                                     key={item.title}
                                     actions={[
-                                        <IconText  text="รายละเอียด" key="list-vertical-star-o" />,
+                                        <IconText  text="เเก้ไข" key="list-vertical-star-o" />,
                                         <IconText  text="เเจ้งปัญหา" key="list-vertical-like-o" />,
                                         <Button shape="circle">ยืม</Button>
                                     ]}

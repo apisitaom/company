@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card, CardBody, CardHeader, Col, FormGroup, Input, Label, Row, Button, CardFooter } from 'reactstrap';
 import { DatePicker } from 'antd';
-import { employeeAdd } from '../../services/api'
+import { employeeAdd, positionAll } from '../../services/api'
 export default class EmployeeForm extends Component {
     state = {
         name: '',
@@ -17,7 +17,19 @@ export default class EmployeeForm extends Component {
         country: '',
         nationality: '',
         race: '',
-        religion: ''
+        religion: '',
+        // Position
+        positions: []
+    }
+    UNSAFE_componentWillMount () {
+        this.onGetPosition();
+    }
+    onGetPosition = async () => {
+        const resp = await positionAll();
+        resp.code === 200 && this.setState({
+            positions: resp.data
+        })
+        
     }
     onChangeDate = async (date, dateString) => {
         this.setState({
@@ -81,10 +93,13 @@ export default class EmployeeForm extends Component {
                                         name="position"
                                         onChange={this.onChange}
                                         >
-                                            <option>CEO</option>
-                                            <option>GM</option>
-                                            <option>Engineer</option>
-                                            <option>Security</option>
+                                            {
+                                                this.state.positions.map(index => {
+                                                    return (
+                                                    <option key={index._id}>{index.position}</option>
+                                                    )
+                                                })
+                                            }
                                     </Input>
                                 </FormGroup>
                             </Col>
