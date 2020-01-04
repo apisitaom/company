@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col, Input } from 'reactstrap'
-import { Table, Divider, Switch, Icon } from 'antd'
+import { Table, Icon } from 'antd'
 import { employeeAll } from '../../../../services/api'
 export default class Lists extends Component {
     state = {
@@ -44,10 +44,6 @@ export default class Lists extends Component {
             <div>
                 <Row>
                     <Col xs="12" sm="6">
-                        <Divider type="vertical" />
-                        <strong>Status Employee</strong>
-                        <Divider type="vertical" />
-                        <Switch checkedChildren="อยู่" unCheckedChildren="ออก" defaultChecked onChange={this.onChange} />
                     </Col>
                     <Col xs="12" sm="6">
                         <Input type="text" id="name" placeholder="Search employee name ?" required />

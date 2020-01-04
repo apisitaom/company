@@ -18,6 +18,8 @@ export default class EmployeeForm extends Component {
         nationality: '',
         race: '',
         religion: '',
+        position: '',
+        status: true,
         // Position
         positions: []
     }
@@ -41,7 +43,7 @@ export default class EmployeeForm extends Component {
           [e.target.name]: e.target.value
         })
     }
-    onSubmit = () => {
+    onSubmit = async () => {
         const data = {
             name: this.state.name,
             identification: this.state.identification,
@@ -56,13 +58,17 @@ export default class EmployeeForm extends Component {
             country: this.state.country,
             nationality: this.state.nationality,
             race: this.state.race,
-            religion: this.state.religion
+            religion: this.state.religion,
+            position: this.state.position,
+            status: this.state.status,
         }
-        employeeAdd(data);
+        await employeeAdd(data);
     }
     onReset = async () => {
     }
     render() {
+        console.log('STATE :', this.state);
+        
         return (
             <div>
                 <Card>
@@ -90,7 +96,7 @@ export default class EmployeeForm extends Component {
                                     <Label htmlFor="position">ตำเเหน่ง</Label>
                                     <Input 
                                         type="select" 
-                                        name="position"
+                                        name="positionid"
                                         onChange={this.onChange}
                                         >
                                             {
@@ -108,11 +114,11 @@ export default class EmployeeForm extends Component {
                                     <Label htmlFor="ccnumber">สถานะการทำงาน</Label>
                                     <Input 
                                         type="select" 
-                                        name="position"
+                                        name="status"
                                         onChange={this.onChange}
                                         >
-                                            <option value='true' >ยังคงทำงาน</option>
-                                            <option value='false' >พ้นสภาพพนักงาน</option>
+                                            <option value={true} >ยังคงทำงาน</option>
+                                            <option value={false} >พ้นสภาพพนักงาน</option>
                                     </Input>
                                 </FormGroup>
                             </Col>
