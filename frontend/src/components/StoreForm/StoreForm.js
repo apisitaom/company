@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Upload, Icon, Form, Input, Select, message } from 'antd'
+import { Upload, Icon, Form, Input, Select, message, Button } from 'antd'
 import { Row, Col, Label } from 'reactstrap'
-import { categoryAll } from '../../services/api'
+import { categoryAll, storeAdd } from '../../services/api'
 const { TextArea } = Input
 const { Option } = Select;
 class StoreForm extends Component {
@@ -32,29 +32,29 @@ class StoreForm extends Component {
           category: value
       })
     }
-    // handleSubmit = async e => {
-    //   e.preventDefault()    
-    //   this.props.form.validateFields(async (err, value) => {
-    //     if (!err) {
-    //       const formData = await this.setFormData(value);      
-    //       const resp = await albumAdd(formData);
-    //       if (resp.code === 200) {
-    //         window.location.assign('#product');
-    //       } else {
-    //         message.error('Add Product failed, Please try again');
-    //       }
-    //     }
-    //   })
-    // }
-    // setFormData = (values) => {
-    //   const formData = new FormData()
-    //   formData.append('picture', this.state.imgFile)    
-    //   formData.append('detail', values.detail)    
-    //   formData.append('url', values.url)    
-    //   formData.append('name', values.name)  
-    //   formData.append('content', values.content)    
-    //   return formData
-    // }
+    handleSubmit = async e => {
+      e.preventDefault()    
+      this.props.form.validateFields(async (err, value) => {
+        if (!err) {
+          const formData = await this.setFormData(value); 
+          const resp = await storeAdd(formData);
+          if (resp.code === 200) {
+            window.location.assign('#product');
+          } else {
+            message.error('Add Product failed, Please try again');
+          }
+        }
+      })
+    }
+    setFormData = (values) => {
+      const formData = new FormData()
+      formData.append('picture', this.state.imgFile)    
+      formData.append('category', values.category)    
+      formData.append('name', values.name)    
+      formData.append('option', values.option)  
+      formData.append('detail', values.detail)    
+      return formData
+    }
     beforeUpload = file => {
       const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
       if (!isJpgOrPng) {
@@ -145,6 +145,11 @@ class StoreForm extends Component {
                                 <TextArea placeholder="รายละเอียด/สิ่งของ" />
                                 ,)}
                         </Form.Item>
+                        <Form.Item>
+                          <Button type="primary" htmlType="submit"  >
+                              SUBMIT
+                          </Button>
+                        </Form.Item> 
                     </Form>
                 </Col>
             </Row>

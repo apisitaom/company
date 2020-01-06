@@ -80,7 +80,7 @@ export default class Lists extends Component {
                                 >
                                     <List.Item.Meta
                                         avatar={<Avatar src={item.avatar} />}
-                                        title={<a href={item.href}>{item.name}</a>}
+                                        title={<span>{item.name}</span>}
                                         description={item.option}
                                     />
                                     {item.detail}

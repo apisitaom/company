@@ -25,7 +25,6 @@ export const FetchForm = async (method="POST",token, path, data={} ) =>{
         const url = apiurl+path
         const res = await fetch(url, {
             headers: {
-                // Authorization: `Bearer ${token}`
                 Authorization: "Bearer " + token,
             },
             method: method||"POST",
