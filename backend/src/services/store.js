@@ -4,11 +4,11 @@ const success = require('../lib/success');
 const errors = require('../lib/error');
 
 
-async function add (req, res, next) {
+function add (req, res, next) {
     const { name, option, detail, category } = req.body
-    const datas = { picture: req.files[0].filename , name, option, detail, category }    
+    const datas = { picture :req.files[0].filename, name, option, detail, category }  
     try {
-        await Store.create(datas);
+        Store.create(datas);
         return responces.success(res, success.saved)
     } catch (error) {
         return responces.error(res, errors.server);
