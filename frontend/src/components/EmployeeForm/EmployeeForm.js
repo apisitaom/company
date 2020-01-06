@@ -67,8 +67,6 @@ export default class EmployeeForm extends Component {
     onReset = async () => {
     }
     render() {
-        console.log('STATE :', this.state);
-        
         return (
             <div>
                 <Card>
@@ -96,15 +94,15 @@ export default class EmployeeForm extends Component {
                                     <Label htmlFor="position">ตำเเหน่ง</Label>
                                     <Input 
                                         type="select" 
-                                        name="positionid"
+                                        name="position"
                                         onChange={this.onChange}
                                         >
                                             {
-                                                this.state.positions.map(index => {
+                                                typeof this.state.position !== 'undefined' ? this.state.positions.map(index => {
                                                     return (
                                                     <option key={index._id}>{index.position}</option>
                                                     )
-                                                })
+                                                }) : <option>undifined</option>
                                             }
                                     </Input>
                                 </FormGroup>

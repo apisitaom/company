@@ -15,9 +15,6 @@ export default class Lists extends Component {
             employee: resp.data
         })
     }
-    onChange(checked) {
-        console.log(`switch to ${checked}`);
-    }
     render() {
         const columns = [
             { title: 'ชื่อ-นามสกุล', dataIndex: 'name', key: 'name' },
@@ -25,6 +22,7 @@ export default class Lists extends Component {
             { title: 'อายุ', dataIndex: 'age', key: 'age' },
             { title: 'เพศ', key: 'gender', dataIndex: 'gender' },
             { title: 'เบอร์โทร', key: 'phonenumber', dataIndex: 'phonenumber' },
+            { title: 'ตำแหน่ง', key: 'position', dataIndex: 'position' },
             { title: 'เเก้ไข', key: '', dataIndex: '',
                 render: text => {
                     return (
