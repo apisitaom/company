@@ -111,36 +111,36 @@ class StoreForm extends Component {
                         </Form.Item>
                         <Form.Item>
                             {getFieldDecorator('category', {
-                                rules: [{required: true, message: 'Please input your category!' }],
+                                rules: [{required: true, message: 'Please Select category!' }],
                             })(
                                 <Select style={{ width: '50%' }} onChange={this.handleChange} placeholder="เลือกประเภท">
                                     {
-                                        this.state.categorys.map(index =>{
+                                        typeof this.state.category !== 'undefined' ? this.state.categorys.map(index =>{
                                             return (
                                             <Option key={index.category}>{index.category}</Option>
                                             )
-                                        })
+                                        }) : <Option>undefined</Option>
                                     }
                                 </Select>
                                     ,)}
                         </Form.Item>
                         <Form.Item>
                             {getFieldDecorator('name', {
-                                rules: [{ required: true, message: 'Please input your names!' }],
+                                rules: [{ required: true, message: 'Please input names!' }],
                             })(
                                 <Input placeholder="ชื่อ/สิ่งของ" />
                                     ,)}
                         </Form.Item>
                         <Form.Item>
                             {getFieldDecorator('option', {
-                                rules: [{ required: true, message: 'Please input your options!' }],
+                                rules: [{ required: true, message: 'Please input options!' }],
                             })(
                                 <Input placeholder="รายละเอียดคร่าวๆ เช่น สี, ขนาด..." />
                                 ,)}
                         </Form.Item>
                         <Form.Item>
                             {getFieldDecorator('detail', {
-                                rules: [{ required: true, message: 'Please input your detail!' }],
+                                rules: [{ required: true, message: 'Please input detail!' }],
                             })(
                                 <TextArea placeholder="รายละเอียด/สิ่งของ" />
                                 ,)}
