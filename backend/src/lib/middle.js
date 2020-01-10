@@ -14,7 +14,7 @@ function generateToken(datas) {
     const token = jwt.sign({
         data: datas
     }, 
-        process.env.SECRET, { expiresIn: '30d' }
+        process.env.SECRET || 'Apisit0857646956', { expiresIn: '30d' }
     );
     return token;
 }
