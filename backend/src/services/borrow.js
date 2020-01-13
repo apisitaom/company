@@ -28,8 +28,15 @@ async function edit (req, res, next) {
 
 async function lists (req, res, next) {
     try {
-        const rows = await Borrow.find();
-        return responces.success(res, success.success, rows)
+        await Borrow.find().
+        populate('employeeid').
+        populate('storeid').
+        exec(function (err, story){
+            if (err) return responces.error(res, errors.server);
+            story.map(index => {
+            })
+            return responces.success(res, success.success, story)
+        })
     } catch (error) {
         return responces.error(res, errors.server);
     }
