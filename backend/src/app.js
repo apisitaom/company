@@ -30,7 +30,7 @@ app.use(express.static('public'));
         .catch(err => console.log('DATABASE ERROR !!!'))
         
 app.use((req, res, next) => {
-    console.log(`Server on path ${req.ip} ${req.method} ${req.path}`)
+    console.log(` ✅ Server on path ${req.ip} ${req.method} ${req.path}`)
     next();
 });
 
@@ -49,5 +49,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server on Port: ${port}`);
+    console.log(` 🚀  Server on Port: ${port}`);
 });
