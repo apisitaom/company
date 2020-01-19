@@ -10,6 +10,7 @@ const port = process.env.PORT || 4003
 
 const addressformRoute = require('./routes/addressform');
 const addresspresentRoute = require('./routes/addresspresent');
+const adminRoute = require('./routes/admin');
 const borrowRoute = require('./routes/borrow');
 const categoryRoute = require('./routes/category');
 const employeeRoute = require('./routes/employee'); 
@@ -30,12 +31,13 @@ app.use(express.static('public'));
         .catch(err => console.log('DATABASE ERROR !!!'))
         
 app.use((req, res, next) => {
-    console.log(` ✅ Server on path ${req.ip} ${req.method} ${req.path}`)
+    console.log(` ✅  Server on path ${req.ip} ${req.method} ${req.path}`)
     next();
 });
 
 app.use('/addressform', addressformRoute);
 app.use('/addresspresent', addresspresentRoute);
+app.use('/admin', adminRoute);
 app.use('/borrow', borrowRoute);
 app.use('/category', categoryRoute);
 app.use('/employee', employeeRoute);
