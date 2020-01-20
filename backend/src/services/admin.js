@@ -18,7 +18,6 @@ function add (req, res, next) {
     }
 }
 
-
 async function edit (req, res, next) {
     const { email, password } = req.body
     const datas = { email, password }
@@ -50,6 +49,9 @@ async function deletes (req, res, next) {
 
 async function login (req, res, next) {
     const { email, password } = req.body
+    if(!email || !password) {
+        return responces.error(res, errors.params);
+    }
     try {
         // select email, password where email = $1, and password = $2;
         const rows = await Admin.find({email: `${email}`, password: `${password}`}, {password, email});
