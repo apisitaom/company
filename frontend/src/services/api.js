@@ -119,4 +119,8 @@ export const storeDeleted = async (data, token = "") => {
     const res = await Fetch("DELETE", token, `/store/deleted/${data}`, data);
     return res;
 };
-
+// Admin
+export const adminLogin = async(data) => {
+    const res = await Fetch("POST", '', '/admin/login', data)
+    return res
+}

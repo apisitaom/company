@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
-
+import { adminLogin } from '../../../services/api'
+import { message } from 'antd'
 class Login extends Component {
   onSubmit = async () => {
-    // const { email, password } = this.state
-    // const data = {
-    //   email: email,
-    //   password: password
-    // }
-    // const resp = '';
-    // if (resp.code === 200) {
-    //   window.location.assign('#owner/edit');
-    // } else {
-    // }
+    const { email, password } = this.state
+    const data = {
+      email: email,
+      password: password
+    }
+    const resp = await adminLogin(data);
+    if (resp.code === 200) {
+      window.location.assign('#dashboard');
+    } else {
+      message.warn('Something error !!');
+    }
   }
   render() {
     return (
@@ -26,7 +27,7 @@ class Login extends Component {
                   <CardBody>
                     <Form>
                       <h1>Login</h1>
-                      <p className="text-muted">Sign In to your account</p>
+                      <p className="text-muted">Sign in AOM company and technology</p>
                       <InputGroup className="mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
@@ -61,23 +62,11 @@ class Login extends Component {
                             onClick={() => this.onSubmit()}
                             >Login</Button>
                         </Col>
-                        <Col xs="6" className="text-right">
+                        {/* <Col xs="6" className="text-right">
                           <Button color="link" className="px-0">Forgot password?</Button>
-                        </Col>
+                        </Col> */}
                       </Row>
                     </Form>
-                  </CardBody>
-                </Card>
-                <Card className="text-white bg-primary py-5 d-md-down-none" style={{ width: '44%' }}>
-                  <CardBody className="text-center">
-                    <div>
-                      <h2>Sign up</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
-                      <Link to="/register">
-                        <Button color="primary" className="mt-3" active tabIndex={-1}>Register Now!</Button>
-                      </Link>
-                    </div>
                   </CardBody>
                 </Card>
               </CardGroup>
