@@ -124,3 +124,12 @@ export const adminLogin = async(data) => {
     const res = await Fetch("POST", '', '/admin/login', data)
     return res
 }
+// Dashboard
+export const employeeCount = async (data, token = "") => {
+    const res = await Fetch("GET", token, `/dashboard/employeecount`, data);
+    return res;
+};
+export const storeCount = async (data, token = "") => {
+    const res = await Fetch("GET", token, `/dashboard/storecount`, data);
+    return res;
+};

@@ -4,10 +4,6 @@ export default {
       name: 'Dashboard',
       url: '/dashboard',
       icon: 'icon-speedometer',
-      badge: {
-        variant: 'info',
-        text: 'NEW',
-      },
     },
     {
       title: true,
@@ -27,11 +23,6 @@ export default {
           url: '/employee/add',
           icon: 'icon-plus',
         },
-        // {
-        //   name: 'Edit',
-        //   url: '/employee/edit',
-        //   icon: 'icon-docs',
-        // },
         {
           name: 'Lists',
           url: '/employee/lists',
@@ -48,11 +39,6 @@ export default {
           url: '/store/add',
           icon: 'icon-plus',
         },
-        // {
-        //   name: 'Edit',
-        //   url: '/store/edit',
-        //   icon: 'icon-docs',
-        // },
         {
           name: 'Lists',
           url: '/store/lists',
