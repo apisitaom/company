@@ -40,6 +40,14 @@ export default class Lists extends Component {
       console.log(e);
       message.error('Click on No');
     }
+    confirmBorrow(e) {
+      console.log(e);
+      message.success('Click on Yes Borrow');
+    }
+    cancelBorrow(e) {
+      console.log(e);
+      message.error('Click on No Borrow');
+    }
     render() {
         return (
             <div>
@@ -58,16 +66,24 @@ export default class Lists extends Component {
                                     key={item.title}
                                     actions={[
                                         <Popconfirm
-                                          title="Are you sure to edit"
-                                          onConfirm={this.confirm}
-                                          onCancel={this.cancel}
-                                          okText="Yes"
-                                          cancelText="No"
+                                            title="Are you sure to edit"
+                                            onConfirm={this.confirm}
+                                            onCancel={this.cancel}
+                                            okText="Yes"
+                                            cancelText="No"
                                         >
                                           <span>แก้ไข</span>
                                         </Popconfirm>,
                                         <span onClick={this.openNotification} >แจ้งปัญหา</span>,
-                                        <Button shape="circle">ยืม</Button>
+                                        <Popconfirm
+                                            title="Are you sure to edit"
+                                            onConfirm={this.confirmBorrow}
+                                            onCancel={this.cancelBorrow}
+                                            okText="Yes"
+                                            cancelText="No"
+                                      >
+                                        <Button shape="circle">ยืม</Button>                                      
+                                        </Popconfirm>
                                     ]}
                                     extra={
                                         <img

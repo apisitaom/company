@@ -7,8 +7,8 @@ class Dashboard extends Component {
   state = {
     employeecount: 0,
     storecount: 0,
-    income: 0,
-    outcome: 0
+    income: 99541665,
+    outcome: 12
   }
   UNSAFE_componentWillMount () {
     this.onGetEmployeeCount();

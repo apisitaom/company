@@ -25,7 +25,7 @@ for (var i = 0; i <= elements; i++) {
 }
 
 const mainChart = {
-  labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+  labels: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
   datasets: [
     {
       label: 'Borrow Store',
