@@ -65,6 +65,10 @@ export default class EmployeeForm extends Component {
         await employeeAdd(data);
     }
     onReset = async () => {
+        console.log('RESET !!');
+    }
+    onAddress = async () => {
+        console.log('add address');
     }
     render() {
         return (
@@ -276,6 +280,7 @@ export default class EmployeeForm extends Component {
                     <CardFooter>
                       <Button onClick={this.onSubmit} type="submit" size="sm" color="success"><i className="fa fa-dot-circle-o"></i> Submit</Button>
                       <Button onClick={this.onReset} type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
+                      <Button onClick={this.onAddress} type="reset" size="sm" color="Info">ถัดไป</Button>
                     </CardFooter>
                 </Card>
             </div>

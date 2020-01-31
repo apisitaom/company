@@ -43,7 +43,7 @@ const EmployeeLists = React.lazy(() => import('./views/Pages/Employee/Lists'));
 const StoreAdd = React.lazy(() => import('./views/Pages/Store/Add'));
 const StoreEdit = React.lazy(() => import('./views/Pages/Store/Edit'));
 const StoreLists = React.lazy(() => import('./views/Pages/Store/Lists'));
-
+const Address = React.lazy(() => import('./views/Address/Add'));
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -95,6 +95,7 @@ const routes = [
   { path: '/store/add', exact: true, name: 'Store Add', component: StoreAdd },
   { path: '/store/edit', exact: true, name: 'Store Edit', component: StoreEdit },
   { path: '/store/lists', exact: true, name: 'Store Lists', component: StoreLists },
+  { path: '/address/add', exact: true, name: 'Address Add', component: Address },
 ];
 
 export default routes;

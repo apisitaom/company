@@ -31,6 +31,17 @@ export default {
       ],
     },
     {
+      name: 'Address',
+      icon: 'icon-map',
+      children: [
+        {
+          name: 'Add',
+          url: '/address/add',
+          icon: 'icon-plus',
+        },
+      ],
+    },
+    {
       name: 'Store',
       icon: 'icon-drawer',
       children: [
