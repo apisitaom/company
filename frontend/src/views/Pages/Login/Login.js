@@ -12,6 +12,7 @@ class Login extends Component {
     const resp = await adminLogin(data);
     if (resp.code === 200) {
       window.location.assign('#dashboard');
+      sessionStorage.setItem('access_token', resp.token);
     } else {
       message.warn('Something error !!');
     }

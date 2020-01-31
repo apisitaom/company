@@ -64,7 +64,7 @@ class DefaultLayout extends Component {
                         exact={route.exact}
                         name={route.name}
                         render={props => (
-                          <route.component {...props} />
+                          sessionStorage.getItem('access_token') ? <route.component {...props} /> : <Redirect from={route.path} to="/login" />
                         )} />
                     ) : (null);
                   })}
