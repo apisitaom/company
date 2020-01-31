@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Upload, Icon, Form, Input, Select, message, Button } from 'antd'
 import { Row, Col, Label } from 'reactstrap'
 import { categoryAll, storeAdd } from '../../services/api'
+import AddCategory from '../../components/Modal/AddCategory'
 const { TextArea } = Input
 const { Option } = Select;
 class StoreForm extends Component {
@@ -23,6 +24,7 @@ class StoreForm extends Component {
     }
     onGetCategory = async () => {
         const resp = await categoryAll();
+        console.log(resp);
         resp.code === 200 && this.setState({
             categorys: resp.data
         })
@@ -81,6 +83,10 @@ class StoreForm extends Component {
       })    
       return false;
     };
+    onAddCategory = async () => {
+        console.log('category');
+        
+    }
     render() {
         const { getFieldDecorator } = this.props.form;
         const uploadButton = (  
@@ -123,6 +129,7 @@ class StoreForm extends Component {
                                     }
                                 </Select>
                                     ,)}
+                                    <AddCategory />
                         </Form.Item>
                         <Form.Item>
                             {getFieldDecorator('name', {

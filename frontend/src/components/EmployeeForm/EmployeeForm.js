@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Card, CardBody, CardHeader, Col, FormGroup, Input, Label, Row, Button, CardFooter } from 'reactstrap';
 import { DatePicker } from 'antd';
+import AddPosition from '../Modal/AddPosition'
 import { employeeAdd, positionAll } from '../../services/api'
 export default class EmployeeForm extends Component {
     state = {
@@ -21,7 +22,7 @@ export default class EmployeeForm extends Component {
         position: '',
         status: true,
         // Position
-        positions: []
+        positions: [],
     }
     UNSAFE_componentWillMount () {
         this.onGetPosition();
@@ -109,6 +110,8 @@ export default class EmployeeForm extends Component {
                                                 }) : <option>undifined</option>
                                             }
                                     </Input>
+                                    <AddPosition
+                                    />
                                 </FormGroup>
                             </Col>
                             <Col sx="6">
