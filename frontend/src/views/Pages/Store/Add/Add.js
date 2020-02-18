@@ -4,8 +4,7 @@ export default class Add extends Component {
     render() {
         return (
             <div>
-                <StoreForm 
-                />
+                <StoreForm />
             </div>
         )
     }
