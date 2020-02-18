@@ -85,6 +85,10 @@ export const employeeDeleted = async (data, token = "") => {
     const res = await Fetch("DELETE", token, `/employee/deleted/${data}`, data);
     return res;
 };
+export const employeeLogin = async(data) => {
+    const res = await Fetch("POST", '', '/employee/login', data)
+    return res
+}
 // Position
 export const positionAdd = async(data) => {
     const res = await Fetch("POST", '', '/position/add', data)

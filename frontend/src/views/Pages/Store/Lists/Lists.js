@@ -44,7 +44,7 @@ export default class Lists extends Component {
     }
     confirmBorrow = async (id) => {
         const data = {
-            id: id
+            storeid: id
         }
         console.log('Store/lists: ', data);
         await borrowAdd(data, sessionStorage.getItem('access_token'));

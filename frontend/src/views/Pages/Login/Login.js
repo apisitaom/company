@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
-import { adminLogin } from '../../../services/api'
+import { adminLogin, employeeLogin } from '../../../services/api'
 import { message } from 'antd'
 class Login extends Component {
   onSubmit = async () => {
@@ -10,6 +10,21 @@ class Login extends Component {
       password: password
     }
     const resp = await adminLogin(data);
+    if (resp.code === 200) {
+      window.location.assign('#dashboard');
+      sessionStorage.setItem('access_token', resp.token);
+    } else {
+      message.warn('Something error !!');
+    }
+  }
+
+  onSubmitEmployee = async () => {
+    const { email, password } = this.state
+    const data = {
+      email: email,
+      password: password
+    }
+    const resp = await employeeLogin(data);
     if (resp.code === 200) {
       window.location.assign('#dashboard');
       sessionStorage.setItem('access_token', resp.token);
@@ -27,8 +42,8 @@ class Login extends Component {
                 <Card className="p-4">
                   <CardBody>
                     <Form>
-                      <h1>Login</h1>
-                      <p className="text-muted">Sign in AOM company and technology</p>
+                      <h1>LOGIN</h1>
+                      <p className="text-muted">Sign Company And Technology, co. (CATy)</p>
                       <InputGroup className="mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
@@ -61,11 +76,9 @@ class Login extends Component {
                             color="primary" 
                             className="px-4"
                             onClick={() => this.onSubmit()}
-                            >Login</Button>
+                            >ADMIN</Button>
+                            <Button onClick={this.onSubmitEmployee} color="secondary" >EMPLOYEE</Button>
                         </Col>
-                        {/* <Col xs="6" className="text-right">
-                          <Button color="link" className="px-0">Forgot password?</Button>
-                        </Col> */}
                       </Row>
                     </Form>
                   </CardBody>
