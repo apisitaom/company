@@ -18,5 +18,7 @@ const EmployeeSchema = new Schema({
     religion: {type: String},
     status: {type: Boolean}, 
     position: {type: String},
+    email: {type: String, required: true},
+    password: {type: String, required: true}
 })
 module.exports = Employee = mongoose.model('Employee', EmployeeSchema)

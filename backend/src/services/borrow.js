@@ -2,13 +2,17 @@ const Borrow = require('../models/borrow');
 const responces = require('../lib/responces');
 const success = require('../lib/success');
 const errors = require('../lib/error');
-
+const middle = require('../lib/middle');
 
 async function add (req, res, next) {
-    const { employeeid, storeid } = req.body
-    const datas = { employeeid, storeid }
+    const { storeid } = req.body
+    const authenication = req.headers.authorization.split('Bearer');
+    const decode = middle.verifyToken(authenication[1]);
+    const datas = { employeeid: decode.data, storeid }
     try {
-        await Borrow.create(datas);
+        //Don't identify employee 
+
+        // await Borrow.create(datas);
         return responces.success(res, success.saved)
     } catch (error) {
         return responces.error(res, errors.server);

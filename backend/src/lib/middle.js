@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-function verifyToken(token) {
+function verifyToken(token) {    
     const decode = jwt.verify(token, process.env.SECRET);
     return decode;
 }
