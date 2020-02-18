@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { List, Avatar, Button, notification, message, Popconfirm } from 'antd';
 import { Row, Col } from 'reactstrap'
-import { storeAll } from '../../../../services/api'
+import { storeAll, borrowAdd } from '../../../../services/api'
 import { imagurl } from '../../../../services/config/apiurl'
 import company from '../../../../assets/img/company.png'
 export default class Lists extends Component {
@@ -22,6 +22,8 @@ export default class Lists extends Component {
     }   
     onGetStore = async () => {
         const resp = await storeAll();
+        console.log(resp);
+        
         resp.code === 200 && this.setState({
             stores: resp.data
         }) 
@@ -33,20 +35,24 @@ export default class Lists extends Component {
       });
     };
     confirm(e) {
-      console.log(e);
-      message.success('Click on Yes');
+        console.log(e);
+        message.success('Click on Yes');
     }
     cancel(e) {
-      console.log(e);
-      message.error('Click on No');
+        console.log(e);
+        message.error('Click on No');
     }
-    confirmBorrow(e) {
-      console.log(e);
-      message.success('Click on Yes Borrow');
+    confirmBorrow = async (id) => {
+        const data = {
+            id: id
+        }
+        console.log('Store/lists: ', data);
+        await borrowAdd(data, sessionStorage.getItem('access_token'));
+        message.success('รออนุมัติการยืม');
     }
     cancelBorrow(e) {
-      console.log(e);
-      message.error('Click on No Borrow');
+        console.log(e);
+        message.error('Click on No Borrow');
     }
     render() {
         return (
@@ -77,12 +83,16 @@ export default class Lists extends Component {
                                         <span onClick={this.openNotification} >แจ้งปัญหา</span>,
                                         <Popconfirm
                                             title="Are you sure to edit"
-                                            onConfirm={this.confirmBorrow}
+                                            onConfirm={(e) => this.confirmBorrow(item._id)}
                                             onCancel={this.cancelBorrow}
                                             okText="Yes"
                                             cancelText="No"
                                       >
-                                        <Button shape="circle">ยืม</Button>                                      
+                                        <Button 
+                                        shape="circle"
+                                        >
+                                            ยืม
+                                        </Button>                                      
                                         </Popconfirm>
                                     ]}
                                     extra={

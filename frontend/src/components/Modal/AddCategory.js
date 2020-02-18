@@ -40,7 +40,6 @@ handleCancel = e => {
                   เพิ่มประเภท
                 </Button>
                 <Modal
-                  title="Basic Modal"
                   visible={this.state.visible}
                   onOk={this.handleOk}
                   onCancel={this.handleCancel}

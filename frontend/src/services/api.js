@@ -35,8 +35,8 @@ export const addresspresentDeleted = async (data, token = "") => {
     return res;
 };
 // Borrow
-export const borrowAdd = async(data) => {
-    const res = await Fetch("POST", '', '/borrow/add', data)
+export const borrowAdd = async(data, token) => {
+    const res = await Fetch("POST", token, '/borrow/add', data)
     return res
 }
 export const borrowEdit = async(data) => {

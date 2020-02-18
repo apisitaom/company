@@ -24,7 +24,6 @@ class StoreForm extends Component {
     }
     onGetCategory = async () => {
         const resp = await categoryAll();
-        console.log(resp);
         resp.code === 200 && this.setState({
             categorys: resp.data
         })
