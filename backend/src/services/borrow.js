@@ -10,9 +10,7 @@ async function add (req, res, next) {
     const decode = middle.verifyToken(authenication[1]);
     const datas = { employeeid: decode.data, storeid }
     try {
-        //Don't identify employee 
-
-        // await Borrow.create(datas);
+        await Borrow.create(datas);
         return responces.success(res, success.saved)
     } catch (error) {
         return responces.error(res, errors.server);
